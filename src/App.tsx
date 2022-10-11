@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchCountries, IGeo } from './api/Geonames';
 import './App.css';
 import Actions from './components/Actions';
+import CountriesTable from './components/CountriesTable';
 import Select from './components/Select';
 import { filterCountries, getUniqueContinents } from './utils/Functions';
 
@@ -50,6 +51,9 @@ function App() {
       <Select optionData={uniqueContinents} disabled={isCountriesLoading} onChange={handleContinentChange} />
       <Select optionData={metrics} disabled={isCountriesLoading} onChange={handleMetricChange} />
       <Select optionData={maxResults} disabled={isCountriesLoading} onChange={handleMaxResults} />
+      {!isCountriesLoading && (
+        <CountriesTable selectedCountries={selectedCountries} currentMetric={currentMetric} />
+      )}
     </div>
   );
 }

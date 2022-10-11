@@ -1,4 +1,5 @@
 import { IGeo } from "../api/Geonames";
+import { MetricType } from "./Enums";
 
 // Once countries are fetched, only get the unique continents and avoid duplicates
 export const getUniqueContinents = (countries: IGeo[]): string[] => {
@@ -27,4 +28,20 @@ export const filterCountries = (
     }
   });
   return filteredCountries;
+};
+
+// Calculate total of population or areainsqkm
+export const calculateTotalDataCountries = (
+  option: MetricType,
+  countries: IGeo[]
+): number => {
+  let total = 0;
+  countries.map((country) => {
+    if (option === MetricType.population) {
+      total += +country.population;
+    } else {
+      total += +country.areaInSqKm;
+    }
+  });
+  return total;
 };
