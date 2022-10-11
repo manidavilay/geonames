@@ -1,7 +1,7 @@
 import { IGeo } from "../../api/Geonames";
 import { MetricType } from "../../utils/Enums";
 import { ResponsivePie } from "@nivo/pie";
-import "./Pie.css";
+import "./Pie.scss";
 
 interface dataChart {
   id: string;

@@ -1,4 +1,4 @@
-import "./Select.css";
+import "./Select.scss";
 
 type Props = {
   optionData: string[] | number[];

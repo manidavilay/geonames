@@ -1,0 +1,34 @@
+.actions {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    background-color: #00BFA6;
+
+    &__title {
+        margin: 15px 0;
+        font-size: 40px;
+        color: #FFFFFF;
+    }
+
+    &__button {
+        min-width: 100px;
+        padding: 5px;
+        border: 0;
+        border-radius: 20px;
+        background-color: #2F4858;
+        font-size: 20px;
+        color: #FFFFFF;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+            background-color: #FFFFFF;
+            color: #00BFA6;
+        }
+    }
+}

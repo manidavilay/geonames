@@ -1,7 +1,7 @@
 import { IGeo } from "../../api/Geonames";
 import { MetricType } from "../../utils/Enums";
 import Pie from "../pie/Pie";
-import "./CountriesChart.css";
+import "./CountriesChart.scss";
 
 type Props = {
   selectedCountries: IGeo[];

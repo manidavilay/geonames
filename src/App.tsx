@@ -5,7 +5,7 @@ import Actions from './components/actions/Actions';
 import Filters from './components/filters/Filters';
 import CountriesTable from './components/table/CountriesTable';
 import CountriesChart from './components/charts/CountriesChart';
-import './App.css';
+import './App.scss';
 
 function App() {
   const [countries, setCountries] = useState<IGeo[]>([]);

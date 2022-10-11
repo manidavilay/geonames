@@ -1,5 +1,5 @@
 import Select from "../select/Select";
-import "./Filters.css";
+import "./Filters.scss";
 
 type Props = {
   disabled: boolean;

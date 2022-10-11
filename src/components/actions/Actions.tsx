@@ -1,4 +1,4 @@
-import "./Actions.css";
+import "./Actions.scss";
 
 type Props = {
     onGo: () => void
