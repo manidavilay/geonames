@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCountries, IGeo } from './api/Geonames';
-import './App.css';
-import Actions from './components/Actions';
-import CountriesChart from './components/CountriesChart';
-import CountriesTable from './components/CountriesTable';
-import Select from './components/Select';
 import { filterCountries, getUniqueContinents } from './utils/Functions';
+import Actions from './components/actions/Actions';
+import Filters from './components/filters/Filters';
+import CountriesTable from './components/table/CountriesTable';
+import CountriesChart from './components/charts/CountriesChart';
+import './App.css';
 
 function App() {
   const [countries, setCountries] = useState<IGeo[]>([]);
@@ -16,9 +16,6 @@ function App() {
   const [currentContinent, setCurrentContinent] = useState<string>("All");
   const [currentMetric, setCurrentMetric] = useState<string>("All");
   const [currentMaxResults, setCurrentMaxResults] = useState<number>(5);
-
-  const metrics = ["All", "AreaInSqKm", "Population"];
-  const maxResults = [5, 10, 15, 20];
 
   const updateCountries = async () => {
     const data = await fetchCountries();
@@ -49,9 +46,7 @@ function App() {
   return (
     <div className="App">
       <Actions onGo={updateCountries}></Actions>
-      <Select optionData={uniqueContinents} disabled={isCountriesLoading} onChange={handleContinentChange} />
-      <Select optionData={metrics} disabled={isCountriesLoading} onChange={handleMetricChange} />
-      <Select optionData={maxResults} disabled={isCountriesLoading} onChange={handleMaxResults} />
+      <Filters disabled={isCountriesLoading} uniqueContinents={uniqueContinents} handleContinentChange={handleContinentChange} handleMetricChange={handleMetricChange} handleMaxResults={handleMaxResults} />
       {!isCountriesLoading && (
         <>
         <CountriesChart selectedCountries={selectedCountries} currentMetric={currentMetric} currentMaxResults={currentMaxResults} />
