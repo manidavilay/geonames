@@ -2,12 +2,12 @@
 
 .pie {
     height: 500px;
-    margin: 150px 0;
+    margin: 0 0 150px 0;
 
     @media all and (max-width: 767px) {
         width: 85%;
         height: 300px;
-        margin: 30px auto 150px;
+        margin: 0 auto 150px;
     }
 
     &__title {

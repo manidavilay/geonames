@@ -61,8 +61,8 @@ function App() {
     if (countries.length !== 0) {
       setUniqueContinents(getUniqueContinents(countries));
       setIsCountriesLoading(false);
+      window.addEventListener('resize', handleResize);
     };
-    window.addEventListener('resize', handleResize);
   }, [countries]);
 
   let selectedCountries = filterCountries(countries, currentContinent);
@@ -75,16 +75,18 @@ function App() {
 
   return (
     <div className="App">
-      <Actions onGo={updateCountries} isCountriesLoading={isCountriesLoading}></Actions>
-      <Filters
-        disabled={isCountriesLoading}
-        uniqueContinents={uniqueContinents}
-        handleContinentChange={handleContinentChange}
-        handleMetricChange={handleMetricChange}
-        handleMaxResults={handleMaxResults}
-      />
+      {isCountriesLoading && (
+        <Actions onGo={updateCountries} isCountriesLoading={isCountriesLoading}></Actions>
+      )}
       {!isCountriesLoading && (
         <>
+          <Filters
+            disabled={isCountriesLoading}
+            uniqueContinents={uniqueContinents}
+            handleContinentChange={handleContinentChange}
+            handleMetricChange={handleMetricChange}
+            handleMaxResults={handleMaxResults}
+          />
           <CountriesChart
             selectedCountries={selectedCountries}
             currentMetric={currentMetric}

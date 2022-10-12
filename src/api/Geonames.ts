@@ -13,7 +13,7 @@ export const fetchCountries = () => {
   return axios
     .get(
       `${process.env.REACT_APP_URL}/.netlify/functions/proxy`
-    )
+      )
     .then((res) => {
       return(res.data.geonames);
     });

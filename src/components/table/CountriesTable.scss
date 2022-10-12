@@ -1,11 +1,11 @@
 .table {
     width: 85%;
     margin: 0 auto;
-    padding: 0 0 100px;
+    padding: 0 0 220px;
 
     @media all and (max-width: 767px) {
         margin: 30px auto 0;
-        padding: 0 0 50px;
+        padding: 0 0 270px;
     }
 
     &__sort-btn {
