@@ -6,6 +6,22 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+    color: #FFFFFF;
+}
+
 .App {
-    background-color: #eaeaea;
+    position: relative;
+    height: 100vh;
+
+    &__scroll-up {
+        position: fixed;
+        bottom: 45px;
+        right: 40px;
+        cursor: pointer;
+
+        @media all and (max-width: 767px) {
+            right: 10px;
+        }
+    }
 }

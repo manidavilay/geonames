@@ -6,16 +6,16 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 150px;
-    background-color: #E384B9;
+    height: 95px;
+    background-color: #F47560;
 
     @media all and (max-width: 767px) {
         position: relative;
     }
 
     &__title {
-        margin: 15px 0;
-        font-size: 40px;
+        margin: 10px 0;
+        font-size: 23px;
         color: #FFFFFF;
     }
 
@@ -25,14 +25,20 @@
         border: 0;
         border-radius: 20px;
         background-color: #FFFFFF;
-        font-size: 20px;
-        color: #E384B9;
+        font-size: 16px;
+        color: #d75e49;
         cursor: pointer;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.2s ease-in-out;
 
         &:hover {
-            background-color: #F2EBF8;
-            color: #E384B9;
+            background-color: #f2ebe7;
+            color: #df8777;
+        }
+
+        &--fetched {
+            padding: 5px 15px;
+            color: #FFFFFF;
+            cursor: initial;
         }
     }
 }

@@ -19,7 +19,11 @@ type Props = {
   sumOfSelectedCapitals: number;
 };
 
-const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapitals }: Props) => {
+const CountriesTable = ({
+  selectedCountries,
+  currentMetric,
+  sumOfSelectedCapitals,
+}: Props) => {
   const [continentAlphabetically, setContinentAlphabetically] =
     useState<boolean>(true);
   const [countryAlphabetically, setCountryAlphabetically] =
@@ -32,7 +36,7 @@ const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapital
   // Material IU for table cell
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#8E0152",
+      backgroundColor: "#61CDBB",
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -43,11 +47,14 @@ const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapital
   // Material IU for table row
   const StyledTableRow = styled(TableRow)(() => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#F2EBF8",
+      backgroundColor: "#E8F3F1",
     },
     "&:last-child td, &:last-child th": {
       border: 0,
     },
+    "&:last-child": {
+      backgroundColor: "#C4E9E3",
+    }
   }));
 
   // Handleclick for each sort type: continent, country, population and areaInSqKm and sort depending on those type
@@ -73,8 +80,8 @@ const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapital
   return (
     <div className="table">
       <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
+        <Table aria-label="simple table" stickyHeader>
+          <TableHead sx={{ maxHeight: 440 }}>
             <TableRow className="table__row">
               <StyledTableCell>
                 Continent
@@ -111,7 +118,7 @@ const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapital
               </StyledTableCell>
               {currentMetric !== "Population" && (
                 <StyledTableCell align="right">
-                  Area (in SqKm)
+                  Area (km²)
                   <button
                     onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                       handleClick(sortType.areaInSqKm)

@@ -5,6 +5,9 @@ import Actions from "./components/actions/Actions";
 import Filters from "./components/filters/Filters";
 import CountriesTable from "./components/table/CountriesTable";
 import CountriesChart from "./components/charts/CountriesChart";
+import Dialog from "./components/dialog/Dialog";
+import Footer from "./layout/Footer";
+import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import "./App.scss";
 
 function App() {
@@ -12,6 +15,7 @@ function App() {
   const [uniqueContinents, setUniqueContinents] = useState<string[]>([]);
 
   const [isCountriesLoading, setIsCountriesLoading] = useState<boolean>(true);
+  const [isDialogOpened, setIsDialogOpened] = useState<boolean>(false);
 
   const [currentContinent, setCurrentContinent] = useState<string>("All");
   const [currentMetric, setCurrentMetric] = useState<string>("All");
@@ -34,11 +38,31 @@ function App() {
     setCurrentMaxResults(parseInt(e.target.value));
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpened(false);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth < 767) {
+      setIsDialogOpened(true);
+    } else {
+      setIsDialogOpened(false);
+    }
+  };
+ 
   useEffect(() => {
     if (countries.length !== 0) {
       setUniqueContinents(getUniqueContinents(countries));
       setIsCountriesLoading(false);
-    }
+    };
+    window.addEventListener('resize', handleResize);
   }, [countries]);
 
   let selectedCountries = filterCountries(countries, currentContinent);
@@ -51,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <Actions onGo={updateCountries}></Actions>
+      <Actions onGo={updateCountries} isCountriesLoading={isCountriesLoading}></Actions>
       <Filters
         disabled={isCountriesLoading}
         uniqueContinents={uniqueContinents}
@@ -71,10 +95,16 @@ function App() {
             currentMetric={currentMetric}
             sumOfSelectedCapitals={sumOfSelectedCapitals}
           />
+          <FaRegArrowAltCircleUp size={30} color="#d75e49" className="App__scroll-up" onClick={scrollToTop} />
         </>
       )}
+      {isDialogOpened && (
+        <Dialog closeDialog={closeDialog} />
+      )}
+      <Footer />
     </div>
   );
 }
 
 export default App;
+

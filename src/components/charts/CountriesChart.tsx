@@ -31,7 +31,7 @@ const CountriesChart = ({
           option={MetricType.areaInSqKm}
           currentMaxResults={currentMaxResults}
           title="Area in sqKm pie chart"
-          label="sqKm"
+          label="km²"
         />
       )}
     </div>

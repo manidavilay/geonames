@@ -81,7 +81,7 @@ const Pie = ({
         sortByValue={true}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         borderWidth={1}
-        colors={{ scheme: "purple_red" }}
+        colors={{ scheme: "nivo" }}
         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
         arcLabelsSkipAngle={10}
         arcLabel={() => {
@@ -93,7 +93,7 @@ const Pie = ({
         arcLinkLabelsDiagonalLength={60}
         arcLinkLabelsStraightLength={36}
         arcLinkLabelsTextOffset={10}
-        arcLinkLabelsThickness={3}
+        arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: "color", modifiers: [] }}
         arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
       />

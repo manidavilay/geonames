@@ -1,0 +1,39 @@
+.footer {
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 13px;
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        background-color: #E8C1A0;
+        text-align: center;
+
+        p {
+            margin: 0 0 10px;
+        }
+    }
+
+    &__links {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0 0;
+    }
+
+    &__link {
+        margin: 0 5px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &__link:hover {
+        color: #f2ebe7;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        background-color: #F47560;
+    }
+}

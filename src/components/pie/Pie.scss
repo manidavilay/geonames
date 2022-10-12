@@ -7,16 +7,16 @@
     @media all and (max-width: 767px) {
         width: 85%;
         height: 300px;
-        margin: 30px auto 0;
+        margin: 30px auto 150px;
     }
 
     &__title {
         text-align: center;
-        color: #584866;
+        color: #F47560;
         margin: 0 0 50px;
 
         @media all and (max-width: 767px) {
-            margin: 0 0 10px;
+            margin: 0 0 60px;
         }
     }
 
