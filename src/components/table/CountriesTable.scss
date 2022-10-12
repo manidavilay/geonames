@@ -17,10 +17,10 @@
     }
 
     thead tr th {
+        width: calc(100%/5);
         font-family: 'Open Sans', sans-serif;
         font-size: 15px;
         font-weight: bold;
-        width: calc(100%/5);
     }
 
     tbody {
