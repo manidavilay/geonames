@@ -12,7 +12,7 @@ export interface IGeo {
 export const fetchCountries = () => {
   return axios
     .get(
-      "http://api.geonames.org/countryInfoJSON?formatted=true&username=manyvilay"
+      `${process.env.REACT_APP_URL}/.netlify/functions/proxy`
     )
     .then((res) => {
       return(res.data.geonames);
