@@ -17,16 +17,4 @@ a {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
-    &__scroll-up {
-        position: fixed;
-        bottom: 45px;
-        right: 40px;
-        cursor: pointer;
-        z-index: 10;
-
-        @media all and (max-width: 767px) {
-            right: 10px;
-        }
-    }
 }

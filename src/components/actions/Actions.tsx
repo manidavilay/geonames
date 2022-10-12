@@ -1,11 +1,11 @@
 import "./Actions.scss";
 
 type Props = {
-  onGo: () => void;
+  updateCountries: () => void;
   isCountriesLoading: boolean;
 };
 
-const Actions = ({ onGo: handleGo, isCountriesLoading }: Props) => {
+const Actions = ({ updateCountries, isCountriesLoading }: Props) => {
   return (
     <div className="actions">
       <h1 className="actions__title">Geonames API</h1>
@@ -16,7 +16,7 @@ const Actions = ({ onGo: handleGo, isCountriesLoading }: Props) => {
         Here you can fetch all countries informations such as their capital, population or area in km², displayed in pie charts and table, try it !
       </p>
       {isCountriesLoading ? (
-        <button onClick={() => handleGo()} className="actions__button">
+        <button onClick={updateCountries} className="actions__button">
           Fetch countries !
         </button>
       ) : (

@@ -3,10 +3,11 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import "./Dialog.scss";
 
 type Props = {
+  // onClose: () => void;
   closeDialog: () => void;
 };
 
-const Dialog = ({ closeDialog }: Props) => {
+const Dialog = ({ closeDialog, }: Props) => {
   return (
     <div className="dialog">
         <IoMdCloseCircleOutline size={30} color="#FFFFFF" onClick={closeDialog} className="dialog__button" />
