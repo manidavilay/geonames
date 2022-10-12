@@ -7,7 +7,15 @@
     align-items: center;
     width: 100%;
     height: 100px;
-    background-color: #2F4858;
+    background-color: #9078A4;
+
+    @media all and (max-width: 767px) {
+        position: relative;
+        top: 0;
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
 }
 
 .filter {
@@ -19,5 +27,9 @@
     &__label {
         margin: 0 0 10px 0;
         color: #FFFFFF;
+    }
+
+    @media all and (max-width: 767px) {
+        margin: 10px 0;
     }
 }

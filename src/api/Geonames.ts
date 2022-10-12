@@ -4,6 +4,7 @@ export interface IGeo {
   population: number;
   areaInSqKm: number;
   countryName: string;
+  capital: string;
   continentName: string;
 }
 

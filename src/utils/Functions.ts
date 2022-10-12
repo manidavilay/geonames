@@ -75,6 +75,17 @@ export const sortData = (
         );
       }
       break;
+    case sortType.capital:
+      if (sorted) {
+        selectedCountries.sort((a, b) => 
+          a.capital.localeCompare(b.capital)
+        );
+      } else {
+        selectedCountries.sort((a, b) => 
+          b.capital.localeCompare(a.capital)
+        );
+      }
+      break;
     case sortType.population:
       if (sorted) {
         selectedCountries.sort((a, b) => a.population - b.population);

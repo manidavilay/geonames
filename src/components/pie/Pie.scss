@@ -1,11 +1,26 @@
 
 
 .pie {
-    height: 600px;
-    margin: 100px 0;
+    height: 500px;
+    margin: 150px 0;
 
-    h2 {
+    @media all and (max-width: 767px) {
+        width: 85%;
+        height: 300px;
+        margin: 30px auto 0;
+    }
+
+    &__title {
         text-align: center;
-        margin: 0 0 20px;
+        color: #584866;
+        margin: 0 0 50px;
+
+        @media all and (max-width: 767px) {
+            margin: 0 0 10px;
+        }
+    }
+
+    svg {
+        overflow: initial;
     }
 }

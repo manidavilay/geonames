@@ -7,7 +7,11 @@
     align-items: center;
     width: 100%;
     height: 150px;
-    background-color: #00BFA6;
+    background-color: #E384B9;
+
+    @media all and (max-width: 767px) {
+        position: relative;
+    }
 
     &__title {
         margin: 15px 0;
@@ -17,18 +21,18 @@
 
     &__button {
         min-width: 100px;
-        padding: 5px;
+        padding: 5px 15px;
         border: 0;
         border-radius: 20px;
-        background-color: #2F4858;
+        background-color: #FFFFFF;
         font-size: 20px;
-        color: #FFFFFF;
+        color: #E384B9;
         cursor: pointer;
         transition: all 0.5s ease-in-out;
 
         &:hover {
-            background-color: #FFFFFF;
-            color: #00BFA6;
+            background-color: #F2EBF8;
+            color: #E384B9;
         }
     }
 }

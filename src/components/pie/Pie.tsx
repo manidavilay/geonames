@@ -75,13 +75,13 @@ const Pie = ({
 
   return (
     <div className="pie">
-      <h2>{title}</h2>
+      <h2 className="pie__title">{title}</h2>
       <ResponsivePie
         data={pieData}
         sortByValue={true}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         borderWidth={1}
-        colors={{ scheme: "paired" }}
+        colors={{ scheme: "purple_red" }}
         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
         arcLabelsSkipAngle={10}
         arcLabel={() => {
@@ -90,9 +90,9 @@ const Pie = ({
         arcLinkLabel={(e) => {
           return e.id + " : " + e.value + " " + label;
         }}
-        arcLinkLabelsDiagonalLength={36}
+        arcLinkLabelsDiagonalLength={60}
         arcLinkLabelsStraightLength={36}
-        arcLinkLabelsTextOffset={15}
+        arcLinkLabelsTextOffset={10}
         arcLinkLabelsThickness={3}
         arcLinkLabelsColor={{ from: "color", modifiers: [] }}
         arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}

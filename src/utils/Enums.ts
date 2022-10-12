@@ -8,6 +8,7 @@ export enum MetricType {
 export enum sortType {
     continent = "Continent",
     country = "Country",
+    capital = "Capital",
     population = "Population",
     areaInSqKm = "AreaInSqKm",
 };

@@ -10,18 +10,21 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { TiArrowUnsorted } from 'react-icons/ti';
+import { TiArrowUnsorted } from "react-icons/ti";
 import "./CountriesTable.scss";
 
 type Props = {
   selectedCountries: IGeo[];
   currentMetric: string;
+  sumOfSelectedCapitals: number;
 };
 
-const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
+const CountriesTable = ({ selectedCountries, currentMetric, sumOfSelectedCapitals }: Props) => {
   const [continentAlphabetically, setContinentAlphabetically] =
     useState<boolean>(true);
   const [countryAlphabetically, setCountryAlphabetically] =
+    useState<boolean>(true);
+  const [capitalAlphabetically, setCapitalAlphabetically] =
     useState<boolean>(true);
   const [populationAscending, setPopulationAscending] = useState<boolean>(true);
   const [areaInSqKmAscending, setAreaInSqKmAscending] = useState<boolean>(true);
@@ -29,7 +32,7 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
   // Material IU for table cell
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#00BFA6",
+      backgroundColor: "#8E0152",
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -40,7 +43,7 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
   // Material IU for table row
   const StyledTableRow = styled(TableRow)(() => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: "#EAF4F4",
+      backgroundColor: "#F2EBF8",
     },
     "&:last-child td, &:last-child th": {
       border: 0,
@@ -55,6 +58,9 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
     } else if (optionSort === sortType.country) {
       sortData(countryAlphabetically, optionSort, selectedCountries);
       setCountryAlphabetically(!countryAlphabetically);
+    } else if (optionSort === sortType.capital) {
+      sortData(capitalAlphabetically, optionSort, selectedCountries);
+      setCapitalAlphabetically(!capitalAlphabetically);
     } else if (optionSort === sortType.population) {
       sortData(populationAscending, optionSort, selectedCountries);
       setPopulationAscending(!populationAscending);
@@ -71,37 +77,48 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
           <TableHead>
             <TableRow className="table__row">
               <StyledTableCell>
-                ContinentName
+                Continent
                 <button
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                     handleClick(sortType.continent)
                   }
                   className="table__sort-btn"
                 >
-                  <TiArrowUnsorted size={18} color="#2F4858" />
+                  <TiArrowUnsorted size={18} color="#FFFFFF" />
                 </button>
               </StyledTableCell>
               <StyledTableCell align="right">
-                CountryName
+                Country
                 <button
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                     handleClick(sortType.country)
                   }
                   className="table__sort-btn"
                 >
-                  <TiArrowUnsorted size={18} color="#2F4858" />
+                  <TiArrowUnsorted size={18} color="#FFFFFF" />
+                </button>
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                Capital
+                <button
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                    handleClick(sortType.capital)
+                  }
+                  className="table__sort-btn"
+                >
+                  <TiArrowUnsorted size={18} color="#FFFFFF" />
                 </button>
               </StyledTableCell>
               {currentMetric !== "Population" && (
                 <StyledTableCell align="right">
-                  AreaInSqKm
+                  Area (in SqKm)
                   <button
                     onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                       handleClick(sortType.areaInSqKm)
                     }
                     className="table__sort-btn"
                   >
-                    <TiArrowUnsorted size={18} color="#2F4858" />
+                    <TiArrowUnsorted size={18} color="#FFFFFF" />
                   </button>
                 </StyledTableCell>
               )}
@@ -114,7 +131,7 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
                     }
                     className="table__sort-btn"
                   >
-                    <TiArrowUnsorted size={18} color="#2F4858" />
+                    <TiArrowUnsorted size={18} color="#FFFFFF" />
                   </button>
                 </StyledTableCell>
               )}
@@ -130,6 +147,7 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
                   {country.continentName}
                 </TableCell>
                 <TableCell align="right">{country.countryName}</TableCell>
+                <TableCell align="right">{country.capital}</TableCell>
                 {currentMetric !== "Population" && (
                   <TableCell align="right">{country.areaInSqKm}</TableCell>
                 )}
@@ -144,6 +162,7 @@ const CountriesTable = ({ selectedCountries, currentMetric }: Props) => {
             >
               <TableCell>Total</TableCell>
               <TableCell align="right">{selectedCountries.length}</TableCell>
+              <TableCell align="right">{sumOfSelectedCapitals}</TableCell>
               {currentMetric !== "Population" && (
                 <TableCell align="right">
                   {calculateTotalDataCountries(

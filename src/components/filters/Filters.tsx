@@ -17,7 +17,7 @@ const Filters = ({
   handleMaxResults,
 }: Props) => {
   const metrics = ["All", "AreaInSqKm", "Population"];
-  const maxResults = [5, 10, 15, 20];
+  const maxResults = [3, 5, 10];
   
   return (
     <div className="filters">

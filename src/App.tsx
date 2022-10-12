@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { fetchCountries, IGeo } from './api/Geonames';
-import { filterCountries, getUniqueContinents } from './utils/Functions';
-import Actions from './components/actions/Actions';
-import Filters from './components/filters/Filters';
-import CountriesTable from './components/table/CountriesTable';
-import CountriesChart from './components/charts/CountriesChart';
-import './App.scss';
+import React, { useEffect, useState } from "react";
+import { fetchCountries, IGeo } from "./api/Geonames";
+import { filterCountries, getUniqueContinents } from "./utils/Functions";
+import Actions from "./components/actions/Actions";
+import Filters from "./components/filters/Filters";
+import CountriesTable from "./components/table/CountriesTable";
+import CountriesChart from "./components/charts/CountriesChart";
+import "./App.scss";
 
 function App() {
   const [countries, setCountries] = useState<IGeo[]>([]);
@@ -15,7 +15,7 @@ function App() {
 
   const [currentContinent, setCurrentContinent] = useState<string>("All");
   const [currentMetric, setCurrentMetric] = useState<string>("All");
-  const [currentMaxResults, setCurrentMaxResults] = useState<number>(5);
+  const [currentMaxResults, setCurrentMaxResults] = useState<number>(3);
 
   const updateCountries = async () => {
     const data = await fetchCountries();
@@ -42,16 +42,36 @@ function App() {
   }, [countries]);
 
   let selectedCountries = filterCountries(countries, currentContinent);
+
+  let selectedCapitals = selectedCountries.filter((country) => {
+    return country.capital !== "";
+  });
   
+  let sumOfSelectedCapitals = selectedCapitals.length;
+
   return (
     <div className="App">
       <Actions onGo={updateCountries}></Actions>
-      <Filters disabled={isCountriesLoading} uniqueContinents={uniqueContinents} handleContinentChange={handleContinentChange} handleMetricChange={handleMetricChange} handleMaxResults={handleMaxResults} />
+      <Filters
+        disabled={isCountriesLoading}
+        uniqueContinents={uniqueContinents}
+        handleContinentChange={handleContinentChange}
+        handleMetricChange={handleMetricChange}
+        handleMaxResults={handleMaxResults}
+      />
       {!isCountriesLoading && (
         <>
-        <CountriesChart selectedCountries={selectedCountries} currentMetric={currentMetric} currentMaxResults={currentMaxResults} />
-        <CountriesTable selectedCountries={selectedCountries} currentMetric={currentMetric} />
-      </>
+          <CountriesChart
+            selectedCountries={selectedCountries}
+            currentMetric={currentMetric}
+            currentMaxResults={currentMaxResults}
+          />
+          <CountriesTable
+            selectedCountries={selectedCountries}
+            currentMetric={currentMetric}
+            sumOfSelectedCapitals={sumOfSelectedCapitals}
+          />
+        </>
       )}
     </div>
   );
